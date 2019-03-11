@@ -1,0 +1,16 @@
+
+## User-specific stuff:
+.gradle
+.allure
+**/build
+**/out
+**/allure-results
+
+## IntelliJ
+.idea
+.DS_Store
+
+## File-based project format:
+*.iml
+*.ipr
+*.iws
