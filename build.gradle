@@ -1,0 +1,69 @@
+group 'appium-gradle-junit-allure'
+version '0.0.1'
+
+apply plugin: 'java'
+apply plugin: 'io.qameta.allure'
+apply plugin: 'io.franzbecker.gradle-lombok'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    jcenter()
+    mavenCentral()
+}
+
+buildscript {
+    repositories {
+        maven {
+            url "https://plugins.gradle.org/m2/"
+        }
+    }
+    dependencies {
+        classpath 'io.franzbecker:gradle-lombok:1.14'
+        classpath 'io.qameta.allure:allure-gradle:2.5'
+        classpath 'com.adarshr:gradle-test-logger-plugin:1.6.0'
+    }
+}
+
+ext {
+    junitVersion = '5.4.1'
+}
+
+dependencies {
+    compile group: 'io.appium', name: 'java-client', version: '7.0.0'
+    compile group: 'org.seleniumhq.selenium', name: 'selenium-java', version: '3.141.59'
+    testCompile group: 'org.slf4j', name: 'slf4j-simple', version: '1.7.25'
+    testCompile "org.junit.jupiter:junit-jupiter-api:$junitVersion"
+    testCompile "org.junit.jupiter:junit-jupiter-params:$junitVersion"
+    testRuntime "org.junit.jupiter:junit-jupiter-engine:$junitVersion"
+}
+
+test {
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams = true
+        events "PASSED", "FAILED"
+        exceptionFormat = "full"
+    }
+}
+
+//generate allure report after 'test' task
+afterEvaluate {
+    test.finalizedBy(allureReport)
+}
+
+allure {
+    version = '2.7.0'
+    aspectjweaver = true
+    aspectjVersion = '1.8.10'
+    configuration = 'compile'
+
+    useJUnit5 {
+        version = '2.7.0'
+    }
+}
+
+task gradleUpdate(type: Wrapper) {
+    gradleVersion = '4.9'
+}
