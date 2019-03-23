@@ -8,11 +8,13 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
+//extension with appium service running
 @ExtendWith(AppiumServiceExtension.class)
 public class BaseTest {
 
     protected static AppiumDriverProvider driverProvider;
 
+    //apply this extension as class field of a test
     @RegisterExtension
     AttachmentExtension attachment = new AttachmentExtension(driverProvider.getDriver());
 
