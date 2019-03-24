@@ -22,7 +22,7 @@ public class BasePage {
 
     private final AndroidDriver driver;
     private final WebDriverWait wait;
-    private Dimension size;
+    private final Dimension size;
 
     BasePage(AndroidDriver driver, WebDriverWait wait) {
         this.driver = driver;
