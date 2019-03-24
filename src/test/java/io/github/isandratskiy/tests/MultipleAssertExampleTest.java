@@ -1,9 +1,7 @@
 package io.github.isandratskiy.tests;
 
-import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 import io.github.isandratskiy.BaseTest;
-import io.github.isandratskiy.core.NavigationRouter;
 import io.github.isandratskiy.pages.MainPage;
 import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
@@ -31,7 +29,7 @@ class MultipleAssertExampleTest extends BaseTest {
     @DisplayName("multiple assert should failed")
     @Test
     void testMultipleAssertShouldFailed() {
-        open(driver, ".ApiDemos");
+        openActivity(driver, ".ApiDemos");
         mainPage.openPreference()
                 .openHeaders();
         assertAll(
@@ -48,7 +46,7 @@ class MultipleAssertExampleTest extends BaseTest {
     @DisplayName("multiple assert should passed")
     @Test
     void testMultipleAssertShouldPassed() {
-        open(driver, ".ApiDemos");
+        openActivity(driver, ".ApiDemos");
         mainPage.openPreference()
                 .openHeaders();
         assertAll(

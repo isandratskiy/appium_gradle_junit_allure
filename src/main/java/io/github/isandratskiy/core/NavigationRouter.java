@@ -18,7 +18,7 @@ public final class NavigationRouter {
         return new Activity(APP_PACKAGE, activity);
     }
 
-    public static void open(AndroidDriver driver, String activity) {
+    public static void openActivity(AndroidDriver driver, String activity) {
         driver.startActivity(getActivity(activity));
     }
 }
