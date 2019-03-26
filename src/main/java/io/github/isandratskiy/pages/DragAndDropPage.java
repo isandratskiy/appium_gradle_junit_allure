@@ -31,5 +31,4 @@ public class DragAndDropPage extends BasePage {
     public String getDraggableText() {
         return textValue(DRAGGABLE_TEXT);
     }
-
 }
