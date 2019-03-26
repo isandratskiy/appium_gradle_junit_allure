@@ -33,6 +33,9 @@ public class DragAndDropTest extends BaseTest {
                 dragDropPage.DRAG_DOT_ONE,
                 dragDropPage.DRAG_DOT_THREE
         );
-        assertTrue(dragDropPage.getDraggableText().contains("drag_dot_1"));
+        assertTrue(
+                dragDropPage.getDraggableText().contains("drag_dot_1"),
+                "Draggable text is't contain first drag dot"
+        );
     }
 }
