@@ -3,9 +3,6 @@ package io.github.isandratskiy.core;
 import io.appium.java_client.android.Activity;
 import io.appium.java_client.android.AndroidDriver;
 
-import java.util.function.Supplier;
-
-//TODO
 public final class NavigationRouter {
 
     private static final String APP_PACKAGE = "io.appium.android.apis";

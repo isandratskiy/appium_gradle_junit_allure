@@ -2,6 +2,7 @@ package io.github.isandratskiy.pages;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.touch.LongPressOptions;
 import io.github.isandratskiy.core.wrappers.WaitCondition;
 import lombok.val;
 import org.openqa.selenium.By;
@@ -12,13 +13,14 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
+import static io.appium.java_client.touch.LongPressOptions.*;
 import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static io.appium.java_client.touch.offset.PointOption.point;
 import static io.github.isandratskiy.core.wrappers.WaitCondition.*;
 
-public class BasePage {
+public abstract class BasePage {
 
     private final AndroidDriver driver;
     private final WebDriverWait wait;
@@ -61,7 +63,7 @@ public class BasePage {
     }
 
     //tap action by locator
-    public BasePage tap(By locator) {
+    public BasePage tap(final By locator) {
         getTouchAction()
                 .tap(tapOptions().withElement(element(waitFor(present, locator))))
                 .perform();
@@ -69,7 +71,7 @@ public class BasePage {
     }
 
     //tap action by position with waiter
-    public BasePage tapByElementPosition(By locator, Duration duration) {
+    public BasePage tapByElementPosition(final By locator, final Duration duration) {
         val element = waitFor(present, locator);
         val position = element.getLocation();
         getTouchAction()
@@ -80,7 +82,7 @@ public class BasePage {
     }
 
     //waiter for tap actions chain
-    public BasePage suspend(Duration duration) {
+    public BasePage suspend(final Duration duration) {
         getTouchAction()
                 .waitAction(waitOptions((duration)))
                 .perform();
@@ -88,7 +90,7 @@ public class BasePage {
     }
 
     //scroll down view
-    public BasePage scrollDown(Duration duration) {
+    public BasePage scrollDown(final Duration duration) {
         int width = (int) (size.width * 0.50);
         int start = (int) (size.getHeight() * 0.80);
         int end = (int) (size.getHeight() * 0.30);
@@ -96,6 +98,17 @@ public class BasePage {
                 .press(point(width, start))
                 .waitAction(waitOptions(duration))
                 .moveTo(point(width, end))
+                .release()
+                .perform();
+        return this;
+    }
+
+    //move from element to needed element
+    public BasePage moveTo(final By source, final By destination) {
+        getTouchAction()
+                .longPress(longPressOptions()
+                .withElement(element(waitFor(present, source))))
+                .moveTo(element((waitFor(present, destination))))
                 .release()
                 .perform();
         return this;

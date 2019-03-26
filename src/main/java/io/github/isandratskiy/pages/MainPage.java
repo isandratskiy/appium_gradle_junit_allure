@@ -7,8 +7,8 @@ import static io.appium.java_client.MobileBy.*;
 
 public class MainPage extends BasePage {
 
-    private AndroidDriver driver;
-    private WebDriverWait wait;
+    private final AndroidDriver driver;
+    private final WebDriverWait wait;
 
     public MainPage(AndroidDriver driver, WebDriverWait wait) {
         super(driver, wait);

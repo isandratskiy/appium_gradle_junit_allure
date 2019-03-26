@@ -5,8 +5,8 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class ViewsPage extends BasePage {
 
-    private AndroidDriver driver;
-    private WebDriverWait wait;
+    private final AndroidDriver driver;
+    private final WebDriverWait wait;
 
     ViewsPage(AndroidDriver driver, WebDriverWait wait) {
         super(driver, wait);

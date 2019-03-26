@@ -7,8 +7,8 @@ import static io.appium.java_client.MobileBy.AccessibilityId;
 
 public class PreferencePage extends BasePage {
 
-    private AndroidDriver driver;
-    private WebDriverWait wait;
+    private final AndroidDriver driver;
+    private final WebDriverWait wait;
 
     PreferencePage(AndroidDriver driver, WebDriverWait wait) {
         super(driver, wait);

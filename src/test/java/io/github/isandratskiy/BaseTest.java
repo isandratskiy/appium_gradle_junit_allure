@@ -26,7 +26,7 @@ public class BaseTest {
 
     @AfterAll
     static void closeDriver() {
-        driverProvider.quitDriver();
+        //driverProvider.quitDriver();
     }
 
     private static void setupDriver() {
