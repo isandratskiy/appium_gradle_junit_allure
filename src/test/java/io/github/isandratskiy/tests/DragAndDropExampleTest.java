@@ -25,7 +25,7 @@ public class DragAndDropExampleTest extends BaseTest {
 
     }
 
-    @DisplayName("can drag and drop element")
+    @DisplayName("can drag and drop first element")
     @Test
     void testCanDragAndDropElement() {
         openActivity(driver, ".view.DragAndDropDemo");
@@ -39,7 +39,7 @@ public class DragAndDropExampleTest extends BaseTest {
         );
     }
 
-    @DisplayName("can drag and drop element")
+    @DisplayName("can drag and drop hidden element")
     @Test
     void testCanDragAndDropHiddenElement() {
         openActivity(driver, ".view.DragAndDropDemo");
