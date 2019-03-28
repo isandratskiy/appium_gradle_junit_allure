@@ -2,8 +2,8 @@ package io.github.isandratskiy.tests;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.github.isandratskiy.BaseTest;
-import io.github.isandratskiy.pages.HeadersPage;
-import io.github.isandratskiy.pages.MainPage;
+import io.github.isandratskiy.screens.HeadersScreen;
+import io.github.isandratskiy.screens.MainScreen;
 import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -18,15 +18,15 @@ import static org.junit.jupiter.api.Assertions.*;
 class MultipleAssertExampleTest extends BaseTest {
 
     private AndroidDriver driver;
-    private MainPage mainPage;
-    private HeadersPage headers;
+    private MainScreen mainPage;
+    private HeadersScreen headers;
 
     @BeforeEach
     void setup() {
         driver = driverProvider.getDriver();
         val wait = driverProvider.getWebDriverWait(driver);
-        mainPage = new MainPage(driver, wait);
-        headers = new HeadersPage(driver, wait);
+        mainPage = new MainScreen(driver, wait);
+        headers = new HeadersScreen(driver, wait);
     }
 
     @DisplayName("multiple assert should failed")

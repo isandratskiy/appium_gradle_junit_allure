@@ -1,23 +1,25 @@
-package io.github.isandratskiy.pages;
+package io.github.isandratskiy.screens;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static io.appium.java_client.MobileBy.*;
 
-public class MainPage extends BasePage {
+public class MainScreen extends BaseScreen {
 
     private final AndroidDriver driver;
     private final WebDriverWait wait;
 
-    public MainPage(AndroidDriver driver, WebDriverWait wait) {
+    public MainScreen(AndroidDriver driver, WebDriverWait wait) {
         super(driver, wait);
         this.driver = driver;
         this.wait = wait;
     }
 
-    public PreferencePage openPreference() {
+    @Step("Open Preference screen")
+    public PreferenceScreen openPreference() {
         tap(AccessibilityId("Preference"));
-        return new PreferencePage(driver, wait);
+        return new PreferenceScreen(driver, wait);
     }
 }

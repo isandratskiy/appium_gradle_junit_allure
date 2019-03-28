@@ -1,23 +1,25 @@
-package io.github.isandratskiy.pages;
+package io.github.isandratskiy.screens;
 
 import io.appium.java_client.android.AndroidDriver;
+import io.qameta.allure.Step;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static io.appium.java_client.MobileBy.AccessibilityId;
 
-public class PreferencePage extends BasePage {
+public class PreferenceScreen extends BaseScreen {
 
     private final AndroidDriver driver;
     private final WebDriverWait wait;
 
-    PreferencePage(AndroidDriver driver, WebDriverWait wait) {
+    PreferenceScreen(AndroidDriver driver, WebDriverWait wait) {
         super(driver, wait);
         this.driver = driver;
         this.wait = wait;
     }
 
-    public HeadersPage openHeaders() {
+    @Step("Open Headers screen")
+    public HeadersScreen openHeaders() {
         tap(AccessibilityId("8. Headers"));
-        return new HeadersPage(driver, wait);
+        return new HeadersScreen(driver, wait);
     }
 }

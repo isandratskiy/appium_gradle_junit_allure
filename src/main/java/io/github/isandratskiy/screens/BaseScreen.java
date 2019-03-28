@@ -1,8 +1,7 @@
-package io.github.isandratskiy.pages;
+package io.github.isandratskiy.screens;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.touch.LongPressOptions;
 import io.github.isandratskiy.core.wrappers.WaitCondition;
 import lombok.val;
 import org.openqa.selenium.By;
@@ -20,13 +19,13 @@ import static io.appium.java_client.touch.offset.ElementOption.element;
 import static io.appium.java_client.touch.offset.PointOption.point;
 import static io.github.isandratskiy.core.wrappers.WaitCondition.*;
 
-public abstract class BasePage {
+public abstract class BaseScreen {
 
     private final AndroidDriver driver;
     private final WebDriverWait wait;
     private final Dimension size;
 
-    BasePage(AndroidDriver driver, WebDriverWait wait) {
+    BaseScreen(AndroidDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
         this.size = driver.manage().window().getSize();
@@ -46,13 +45,13 @@ public abstract class BasePage {
     }
 
     //click by locator
-    public BasePage click(final By locator) {
+    public BaseScreen click(final By locator) {
         waitFor(present, locator).click();
         return this;
     }
 
     //type text value
-    public BasePage type(final By locator, final CharSequence text) {
+    public BaseScreen type(final By locator, final CharSequence text) {
         waitFor(present, locator).sendKeys(text);
         return this;
     }
@@ -63,7 +62,7 @@ public abstract class BasePage {
     }
 
     //tap action by locator
-    public BasePage tap(final By locator) {
+    public BaseScreen tap(final By locator) {
         getTouchAction()
                 .tap(tapOptions().withElement(element(waitFor(present, locator))))
                 .perform();
@@ -71,7 +70,7 @@ public abstract class BasePage {
     }
 
     //tap action by position with waiter
-    public BasePage tapByElementPosition(final By locator, final Duration duration) {
+    public BaseScreen tapByElementPosition(final By locator, final Duration duration) {
         val element = waitFor(present, locator);
         val position = element.getLocation();
         getTouchAction()
@@ -82,7 +81,7 @@ public abstract class BasePage {
     }
 
     //waiter for tap actions chain
-    public BasePage suspend(final Duration duration) {
+    public BaseScreen suspend(final Duration duration) {
         getTouchAction()
                 .waitAction(waitOptions((duration)))
                 .perform();
@@ -90,7 +89,7 @@ public abstract class BasePage {
     }
 
     //scroll down view
-    public BasePage scrollDown(final Duration duration) {
+    public BaseScreen scrollDown(final Duration duration) {
         int width = (int) (size.width * 0.50);
         int start = (int) (size.getHeight() * 0.80);
         int end = (int) (size.getHeight() * 0.30);
@@ -104,7 +103,7 @@ public abstract class BasePage {
     }
 
     //move from element to needed element
-    public BasePage moveTo(final By source, final By destination) {
+    public BaseScreen moveTo(final By source, final By destination) {
         getTouchAction()
                 .longPress(longPressOptions()
                 .withElement(element(waitFor(present, source))))
