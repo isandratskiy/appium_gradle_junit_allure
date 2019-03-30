@@ -12,6 +12,8 @@ public class DragAndDropScreen extends BaseScreen {
     private final AndroidDriver driver;
     private final WebDriverWait wait;
 
+    public final String ACTIVITY = ".view.DragAndDropDemo";
+
     public final By DRAG_DOT_ONE = id("drag_dot_1");
     public final By DRAG_DOT_TWO = id("drag_dot_2");
     public final By DRAG_DOT_THREE = id("drag_dot_3");

@@ -11,6 +11,8 @@ public class MainScreen extends BaseScreen {
     private final AndroidDriver driver;
     private final WebDriverWait wait;
 
+    public final String ACTIVITY = ".ApiDemos";
+
     public MainScreen(AndroidDriver driver, WebDriverWait wait) {
         super(driver, wait);
         this.driver = driver;

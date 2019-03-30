@@ -31,9 +31,6 @@ public class AppiumDriverProvider {
         capabilities.setCapability("platformName", "Android");
         capabilities.setCapability("deviceName", "Android Emulator");
         capabilities.setCapability("app", app.getAbsolutePath());
-        capabilities.setCapability("newCommandTimeout", "80");
-        capabilities.setCapability("unicodeKeyboard", true);
-        capabilities.setCapability("resetKeyboard", true);
 
         driver = new AndroidDriver<>(getInstance(), capabilities);
         log.info("[Appium] Driver is returned");

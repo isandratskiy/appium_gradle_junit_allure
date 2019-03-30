@@ -28,7 +28,7 @@ public class DragAndDropExampleTest extends BaseTest {
     @DisplayName("can drag and drop first element")
     @Test
     void testCanDragAndDropElement() {
-        openActivity(driver, ".view.DragAndDropDemo");
+        openActivity(driver, dragDropPage.ACTIVITY);
         dragDropPage.dragAndDropElement(
                 dragDropPage.DRAG_DOT_ONE,
                 dragDropPage.DRAG_DOT_THREE
@@ -42,7 +42,7 @@ public class DragAndDropExampleTest extends BaseTest {
     @DisplayName("can drag and drop hidden element")
     @Test
     void testCanDragAndDropHiddenElement() {
-        openActivity(driver, ".view.DragAndDropDemo");
+        openActivity(driver, dragDropPage.ACTIVITY);
         dragDropPage.dragAndDropElement(
                 dragDropPage.DRAG_DOT_ONE,
                 dragDropPage.DRAG_DOT_THREE

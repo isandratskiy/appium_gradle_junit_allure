@@ -32,7 +32,7 @@ class MultipleAssertExampleTest extends BaseTest {
     @DisplayName("multiple assert should failed")
     @Test
     void testMultipleAssertShouldFailed() {
-        openActivity(driver, ".ApiDemos");
+        openActivity(driver, mainPage.ACTIVITY);
         mainPage.openPreference()
                 .openHeaders();
         assertAll(
@@ -49,7 +49,7 @@ class MultipleAssertExampleTest extends BaseTest {
     @DisplayName("multiple assert should passed")
     @Test
     void testMultipleAssertShouldPassed() {
-        openActivity(driver, ".ApiDemos");
+        openActivity(driver, mainPage.ACTIVITY);
         mainPage.openPreference()
                 .openHeaders();
         assertAll(
