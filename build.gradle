@@ -4,6 +4,7 @@ version '0.0.1'
 apply plugin: 'java'
 apply plugin: 'io.qameta.allure'
 apply plugin: 'io.franzbecker.gradle-lombok'
+apply plugin: 'com.adarshr.test-logger'
 
 sourceCompatibility = 1.8
 targetCompatibility = 1.8
@@ -41,10 +42,14 @@ dependencies {
 
 test {
     useJUnitPlatform()
-    testLogging {
-        showStandardStreams = true
-        events "PASSED", "FAILED"
-        exceptionFormat = "full"
+    testlogger {
+        theme 'mocha'
+        showStandardStreams true
+        showExceptions true
+        showSummary true
+        showPassed true
+        showSkipped true
+        showFailed true
     }
 }
 
