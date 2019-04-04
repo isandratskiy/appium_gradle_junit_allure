@@ -8,8 +8,8 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
 
-//extension with appium service running
-@ExtendWith(AppiumServiceExtension.class)
+import java.net.MalformedURLException;
+
 public class BaseTest {
 
     protected static AppiumDriverProvider driverProvider;
@@ -19,7 +19,7 @@ public class BaseTest {
     AttachmentExtension attachment = new AttachmentExtension(driverProvider.getDriver());
 
     @BeforeAll
-    static void createDriver() {
+    static void createDriver() throws MalformedURLException {
         driverProvider = new AppiumDriverProvider();
         setupDriver();
     }
@@ -29,7 +29,7 @@ public class BaseTest {
         driverProvider.quitDriver();
     }
 
-    private static void setupDriver() {
+    private static void setupDriver() throws MalformedURLException {
         driverProvider.setupDriver();
     }
 }
