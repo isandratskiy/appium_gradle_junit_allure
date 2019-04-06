@@ -17,31 +17,33 @@ public class AppiumDriverProvider {
 
     private static final int WAIT_TIMEOUT = 10;
 
-    private static String USERNAME = "YOUR_ACCOUNT_USERNAME";
-    private static String ACCESS_KEY = "YOUR_KEY";
-    private static String HUB = format("https://%s:%s@ondemand.eu-central-1.saucelabs.com/wd/hub", USERNAME, ACCESS_KEY);
+    private static String USERNAME = "SAUCE_LABS_USERNAME";
+    private static String ACCESS_KEY = "SAUCE_LABS_ACCESS_KEY";
+    private static String URL_MASK = format("https://%s:%s@ondemand.eu-central-1.saucelabs.com:443/wd/hub", USERNAME, ACCESS_KEY);
 
     private AndroidDriver<AndroidElement> driver;
 
     /**
      * initialization.
      */
-    public void setupDriver() throws MalformedURLException {
+    public void setupDriver() {
         log.info("[Appium] Starting to set new driver");
         val capabilities = new DesiredCapabilities();
         capabilities.setCapability("automationName", "UiAutomator2");
-        capabilities.setCapability("browserName", "");
-        capabilities.setCapability("platformName", "Android");
-        capabilities.setCapability("deviceName","Samsung Galaxy S9 WQHD GoogleAPI Emulator");
-        capabilities.setCapability("version", "8.1");
-        capabilities.setCapability("app", "sauce-storage:ApiDemos_debug.apk");
         capabilities.setCapability("appiumVersion", "1.11.1");
+        capabilities.setCapability("deviceName","Android GoogleAPI Emulator");
+        capabilities.setCapability("deviceOrientation", "portrait");
+        capabilities.setCapability("browserName", "");
+        capabilities.setCapability("platformVersion","8.1");
+        capabilities.setCapability("platformName","Android");
+        capabilities.setCapability("app","https://github.com/isandratskiy/appium_gradle_junit_allure/raw/master/src/test/java/resources/ApiDemos-debug.apk?raw=true");
 
-        log.info("[URL] :: " + HUB);
-        driver = new AndroidDriver<>(
-                new URL(HUB),
-                capabilities
-        );
+        try {
+            driver = new AndroidDriver<>(new URL(URL_MASK), capabilities);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+        log.info("[URL] :: " + URL_MASK);
         log.info("[Appium] Driver is returned");
     }
 

@@ -1,14 +1,10 @@
 package io.github.isandratskiy;
 
 import io.github.isandratskiy.core.driver.AppiumDriverProvider;
-import io.github.isandratskiy.extensions.AppiumServiceExtension;
 import io.github.isandratskiy.extensions.AttachmentExtension;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.extension.ExtendWith;
 import org.junit.jupiter.api.extension.RegisterExtension;
-
-import java.net.MalformedURLException;
 
 public class BaseTest {
 
@@ -19,7 +15,7 @@ public class BaseTest {
     AttachmentExtension attachment = new AttachmentExtension(driverProvider.getDriver());
 
     @BeforeAll
-    static void createDriver() throws MalformedURLException {
+    static void createDriver() {
         driverProvider = new AppiumDriverProvider();
         setupDriver();
     }
@@ -29,7 +25,7 @@ public class BaseTest {
         driverProvider.quitDriver();
     }
 
-    private static void setupDriver() throws MalformedURLException {
+    private static void setupDriver() {
         driverProvider.setupDriver();
     }
 }
