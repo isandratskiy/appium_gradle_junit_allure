@@ -30,8 +30,7 @@ public class DragAndDropExampleTest extends BaseTest {
     void testCanDragAndDropElement() {
         openActivity(driver, dragDropPage.ACTIVITY);
         dragDropPage.dragAndDropElement(
-                dragDropPage.DRAG_DOT_ONE,
-                dragDropPage.DRAG_DOT_THREE
+                dragDropPage.DRAG_DOT_ONE, dragDropPage.DRAG_DOT_THREE
         );
         assertTrue(
                 dragDropPage.getDraggableText().contains("drag_dot_1"),
@@ -44,11 +43,9 @@ public class DragAndDropExampleTest extends BaseTest {
     void testCanDragAndDropHiddenElement() {
         openActivity(driver, dragDropPage.ACTIVITY);
         dragDropPage.dragAndDropElement(
-                dragDropPage.DRAG_DOT_ONE,
-                dragDropPage.DRAG_DOT_THREE
+                dragDropPage.DRAG_DOT_ONE, dragDropPage.DRAG_DOT_THREE
         ).dragAndDropElement(
-                dragDropPage.DRAG_DOT_HIDDEN,
-                dragDropPage.DRAG_DOT_ONE
+                dragDropPage.DRAG_DOT_HIDDEN, dragDropPage.DRAG_DOT_ONE
         );
         assertTrue(
                 dragDropPage.getDraggableText().contains("drag_dot_hidden"),

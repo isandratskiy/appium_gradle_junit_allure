@@ -43,7 +43,7 @@ dependencies {
 test {
     useJUnitPlatform()
     testlogger {
-        theme 'mocha'
+        theme 'mocha-parallel'
         showStandardStreams true
         showExceptions true
         showSummary true
@@ -51,6 +51,10 @@ test {
         showSkipped true
         showFailed true
     }
+
+    //maxParallelForks = (int) (Runtime.runtime.availableProcessors().intdiv(2) ?: 1)
+    maxParallelForks = 2
+    forkEvery = 1
 }
 
 //generate allure report after 'test' task

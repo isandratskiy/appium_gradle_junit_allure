@@ -17,9 +17,9 @@ public class AppiumDriverProvider {
 
     private static final int WAIT_TIMEOUT = 10;
 
-    private static String USERNAME = "SAUCE_LABS_USERNAME";
-    private static String ACCESS_KEY = "SAUCE_LABS_ACCESS_KEY";
-    private static String URL_MASK = format("https://%s:%s@ondemand.eu-central-1.saucelabs.com:443/wd/hub", USERNAME, ACCESS_KEY);
+    private static final String USERNAME = "USERNAME";
+    private static final String ACCESS_KEY = "ACCESS_KEY";
+    private static final String URL_MASK = format("https://%s:%s@ondemand.eu-central-1.saucelabs.com:443/wd/hub", USERNAME, ACCESS_KEY);
 
     private AndroidDriver<AndroidElement> driver;
 
