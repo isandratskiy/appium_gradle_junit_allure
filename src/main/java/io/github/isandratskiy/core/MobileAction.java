@@ -2,7 +2,7 @@ package io.github.isandratskiy.core;
 
 import io.appium.java_client.TouchAction;
 import io.appium.java_client.android.AndroidDriver;
-import io.github.isandratskiy.core.actions.Collectable;
+import io.github.isandratskiy.core.actions.Extractable;
 import io.github.isandratskiy.core.actions.Pressable;
 import io.github.isandratskiy.core.actions.Scrollable;
 import io.github.isandratskiy.core.wrappers.WaitCondition;
@@ -22,7 +22,7 @@ import static io.appium.java_client.touch.offset.ElementOption.element;
 import static io.appium.java_client.touch.offset.PointOption.point;
 import static io.github.isandratskiy.core.wrappers.WaitCondition.present;
 
-public class MobileAction implements Pressable, Scrollable, Collectable {
+public class MobileAction implements Pressable, Scrollable, Extractable {
 
     private final AndroidDriver driver;
     private final WebDriverWait wait;
@@ -40,7 +40,7 @@ public class MobileAction implements Pressable, Scrollable, Collectable {
 
     //TODO
     //wait for element condition
-    public WebElement waitFor(WaitCondition condition, By locator) {
+    public WebElement waitFor(final WaitCondition condition, final By locator) {
         try {
             return wait.until(condition.getType().apply(locator));
         } catch (TimeoutException ex) {

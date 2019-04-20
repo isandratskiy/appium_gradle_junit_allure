@@ -12,7 +12,7 @@ public final class ActivityCondition {
     }
 
     @Step("Activity: {activity} is opened")
-    public static boolean activityIsPresent(AndroidDriver driver, WebDriverWait wait, String activity) {
+    public static boolean activityIsPresent(final AndroidDriver driver, final WebDriverWait wait, final String activity) {
         try {
             return wait.until(state ->
                     driver.currentActivity().equalsIgnoreCase(activity));
