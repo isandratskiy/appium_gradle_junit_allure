@@ -36,10 +36,10 @@ class MultipleAssertExampleTest extends BaseTest {
                 "All prefs should be displayed.",
                 () -> assertTrue(
                         isPresentElement(driver, AndroidUIAutomator("resourceId(\"android:id/title\").text(\"Intent\")")),
-                        "Prefs1 button is't displayed"),
+                        "Intent button is't displayed"),
                 () -> assertTrue(
                         isPresentElement(driver, AndroidUIAutomator("resourceId(\"android:id/failed_id\")")), //failed assert
-                        "Prefs2 button is't displayed")
+                        "Failed id should be failed")
         );
     }
 
