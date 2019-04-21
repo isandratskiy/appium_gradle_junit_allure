@@ -29,9 +29,7 @@ public class DragAndDropExampleTest extends BaseTest {
     @Test
     void testCanDragAndDropElement() {
         openActivity(driver, dragDropPage.ACTIVITY);
-        dragDropPage.dragAndDropElement(
-                dragDropPage.DRAG_DOT_ONE, dragDropPage.DRAG_DOT_THREE
-        );
+        dragDropPage.dragFirstElement();
         assertTrue(
                 dragDropPage.getDraggableText().contains("drag_dot_1"),
                 "Unable to drag first dot"
@@ -42,11 +40,9 @@ public class DragAndDropExampleTest extends BaseTest {
     @Test
     void testCanDragAndDropHiddenElement() {
         openActivity(driver, dragDropPage.ACTIVITY);
-        dragDropPage.dragAndDropElement(
-                dragDropPage.DRAG_DOT_ONE, dragDropPage.DRAG_DOT_THREE
-        ).dragAndDropElement(
-                dragDropPage.DRAG_DOT_HIDDEN, dragDropPage.DRAG_DOT_ONE
-        );
+        dragDropPage
+                .dragSecondElement()
+                .dragHiddenElement();
         assertTrue(
                 dragDropPage.getDraggableText().contains("drag_dot_hidden"),
                 "Unable to drag hidden dot"

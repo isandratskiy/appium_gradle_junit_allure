@@ -11,19 +11,19 @@ public class MainScreen {
 
     private final AndroidDriver driver;
     private final WebDriverWait wait;
-    private final MobileAction action;
+    private final MobileAction act;
 
     public final String ACTIVITY = ".ApiDemos";
 
     public MainScreen(AndroidDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
-        this.action = new MobileAction(driver, wait);
+        this.act = new MobileAction(driver, wait);
     }
 
     @Step("Open Preference screen")
     public PreferenceScreen openPreference() {
-        action.tap(AccessibilityId("Preference"));
+        act.tap(AccessibilityId("Preference"));
         return new PreferenceScreen(driver, wait);
     }
 }

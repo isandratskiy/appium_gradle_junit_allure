@@ -11,11 +11,11 @@ public final class NavigationRouter {
         throw new UnsupportedOperationException("Illegal access to constructor.");
     }
 
-    private static Activity getActivity(String activity) {
+    private static Activity getActivity(final String activity) {
         return new Activity(APP_PACKAGE, activity);
     }
 
-    public static void openActivity(AndroidDriver driver, String activity) {
+    public static void openActivity(final AndroidDriver driver, final String activity) {
         driver.startActivity(getActivity(activity));
     }
 }

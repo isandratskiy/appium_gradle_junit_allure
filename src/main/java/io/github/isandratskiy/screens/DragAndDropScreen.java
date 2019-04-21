@@ -16,10 +16,10 @@ public class DragAndDropScreen {
 
     public final String ACTIVITY = ".view.DragAndDropDemo";
 
-    public final By DRAG_DOT_ONE = id("drag_dot_1");
-    public final By DRAG_DOT_TWO = id("drag_dot_2");
-    public final By DRAG_DOT_THREE = id("drag_dot_3");
-    public final By DRAG_DOT_HIDDEN = AndroidUIAutomator("resourceId(\"io.appium.android.apis:id/drag_dot_hidden\").enabled(true)");
+    private final By DRAG_DOT_ONE = id("drag_dot_1");
+    private final By DRAG_DOT_TWO = id("drag_dot_2");
+    private final By DRAG_DOT_THREE = id("drag_dot_3");
+    private final By DRAG_DOT_HIDDEN = AndroidUIAutomator("resourceId(\"io.appium.android.apis:id/drag_dot_hidden\").enabled(true)");
     private final By DRAGGABLE_TEXT = AndroidUIAutomator("resourceId(\"io.appium.android.apis:id/drag_text\")");
 
     public DragAndDropScreen(AndroidDriver driver, WebDriverWait wait) {
@@ -28,13 +28,48 @@ public class DragAndDropScreen {
         this.act = new MobileAction(driver, wait);
     }
 
-    @Step("Drag and drop element")
-    public DragAndDropScreen dragAndDropElement(By fromElement, By toElement) {
+    private DragAndDropScreen dragAndDropElement(final By fromElement, final By toElement) {
         act.moveTo(fromElement, toElement);
         return this;
     }
 
     public String getDraggableText() {
         return act.textValue(DRAGGABLE_TEXT);
+    }
+
+    @Step("Drag and drop first element")
+    public DragAndDropScreen dragFirstElement() {
+        dragAndDropElement(
+                DRAG_DOT_ONE,
+                DRAG_DOT_TWO
+        );
+        return this;
+    }
+
+    @Step("Drag and drop second element")
+    public DragAndDropScreen dragSecondElement() {
+        dragAndDropElement(
+                DRAG_DOT_TWO,
+                DRAG_DOT_THREE
+        );
+        return this;
+    }
+
+    @Step("Drag and drop third element")
+    public DragAndDropScreen dragThirdElement() {
+        dragAndDropElement(
+                DRAG_DOT_THREE,
+                DRAG_DOT_ONE
+        );
+        return this;
+    }
+
+    @Step("Drag and drop hidden element")
+    public DragAndDropScreen dragHiddenElement() {
+        dragAndDropElement(
+                DRAG_DOT_HIDDEN,
+                DRAG_DOT_ONE
+        );
+        return this;
     }
 }

@@ -11,7 +11,7 @@ public final class ElementCondition {
     }
 
     @Step("Element is present :: {locator} ")
-    public static boolean isPresentElement(AndroidDriver driver, By locator) {
+    public static boolean isPresentElement(final AndroidDriver driver, final By locator) {
         Condition ele = element -> driver.findElements(locator).size() > 0;
         return ele.check(locator);
     }

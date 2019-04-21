@@ -34,13 +34,13 @@ public class MobileAction implements Pressable, Scrollable, Extractable {
         this.size = driver.manage().window().getSize();
     }
 
+    //getter for touch instance
     private TouchAction getTouchAction() {
         return new TouchAction(driver);
     }
 
-    //TODO
     //wait for element condition
-    public WebElement waitFor(final WaitCondition condition, final By locator) {
+    private WebElement waitFor(final WaitCondition condition, final By locator) {
         try {
             return wait.until(condition.getType().apply(locator));
         } catch (TimeoutException ex) {
@@ -48,14 +48,14 @@ public class MobileAction implements Pressable, Scrollable, Extractable {
         }
     }
 
-    //TODO
+    //TODO move to interface
     //type text value
     public MobileAction type(final By locator, final CharSequence text) {
         waitFor(present, locator).sendKeys(text);
         return this;
     }
 
-    //TODO
+    //TODO move to interface
     //waiter for tap actions chain
     public MobileAction suspend(final Duration duration) {
         getTouchAction()

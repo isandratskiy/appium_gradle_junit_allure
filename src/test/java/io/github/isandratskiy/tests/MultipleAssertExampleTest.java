@@ -2,7 +2,6 @@ package io.github.isandratskiy.tests;
 
 import io.appium.java_client.android.AndroidDriver;
 import io.github.isandratskiy.BaseTest;
-import io.github.isandratskiy.screens.HeadersScreen;
 import io.github.isandratskiy.screens.MainScreen;
 import lombok.val;
 import org.junit.jupiter.api.BeforeEach;
@@ -19,14 +18,12 @@ class MultipleAssertExampleTest extends BaseTest {
 
     private AndroidDriver driver;
     private MainScreen mainPage;
-    private HeadersScreen headers;
 
     @BeforeEach
     void setup() {
         driver = driverProvider.getDriver();
         val wait = driverProvider.getWebDriverWait(driver);
         mainPage = new MainScreen(driver, wait);
-        headers = new HeadersScreen(driver, wait);
     }
 
     @DisplayName("multiple assert should failed")
@@ -38,10 +35,10 @@ class MultipleAssertExampleTest extends BaseTest {
         assertAll(
                 "All prefs should be displayed.",
                 () -> assertTrue(
-                        isPresentElement(driver, headers.PREF_ONE_BUTTON),
+                        isPresentElement(driver, AndroidUIAutomator("resourceId(\"android:id/title\").text(\"Intent\")")),
                         "Prefs1 button is't displayed"),
                 () -> assertTrue(
-                        isPresentElement(driver, id("failed")), //failed assert
+                        isPresentElement(driver, AndroidUIAutomator("resourceId(\"android:id/failed_id\")")), //failed assert
                         "Prefs2 button is't displayed")
         );
     }
@@ -55,14 +52,11 @@ class MultipleAssertExampleTest extends BaseTest {
         assertAll(
                 "All prefs should be displayed.",
                 () -> assertTrue(
-                        isPresentElement(driver, headers.PREF_ONE_BUTTON),
+                        isPresentElement(driver, AndroidUIAutomator("resourceId(\"android:id/title\").text(\"Prefs 1\")")),
                         "Prefs1 button is't displayed"),
                 () -> assertTrue(
-                        isPresentElement(driver, headers.PREF_TWO_BUTTON),
-                        "Prefs2 button is't displayed"),
-                () -> assertTrue(
-                        isPresentElement(driver, headers.INTENT_BUTTON),
-                        "Intent button is't displayed")
+                        isPresentElement(driver, AndroidUIAutomator("resourceId(\"android:id/title\").text(\"Prefs 2\")")),
+                        "Prefs2 button is't displayed")
         );
     }
 }
