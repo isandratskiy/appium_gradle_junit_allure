@@ -11,7 +11,7 @@ public class HeadersScreen {
 
     private final AndroidDriver driver;
     private final WebDriverWait wait;
-    private final MobileAction action;
+    private final MobileAction act;
 
     public final By PREF_ONE_BUTTON = AndroidUIAutomator("resourceId(\"android:id/title\").text(\"Prefs 1\")");
     public final By PREF_TWO_BUTTON = AndroidUIAutomator("resourceId(\"android:id/title\").text(\"Prefs 2\")");
@@ -20,6 +20,6 @@ public class HeadersScreen {
     public HeadersScreen(AndroidDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
-        this.action = new MobileAction(driver, wait);
+        this.act = new MobileAction(driver, wait);
     }
 }

@@ -8,11 +8,11 @@ public class ViewsScreen {
 
     private final AndroidDriver driver;
     private final WebDriverWait wait;
-    private final MobileAction action;
+    private final MobileAction act;
 
     ViewsScreen(AndroidDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
-        this.action = new MobileAction(driver, wait);
+        this.act = new MobileAction(driver, wait);
     }
 }

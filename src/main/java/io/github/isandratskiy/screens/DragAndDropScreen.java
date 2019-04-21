@@ -12,7 +12,7 @@ public class DragAndDropScreen {
 
     private final AndroidDriver driver;
     private final WebDriverWait wait;
-    private final MobileAction action;
+    private final MobileAction act;
 
     public final String ACTIVITY = ".view.DragAndDropDemo";
 
@@ -25,16 +25,16 @@ public class DragAndDropScreen {
     public DragAndDropScreen(AndroidDriver driver, WebDriverWait wait) {
         this.driver = driver;
         this.wait = wait;
-        this.action = new MobileAction(driver, wait);
+        this.act = new MobileAction(driver, wait);
     }
 
     @Step("Drag and drop element")
     public DragAndDropScreen dragAndDropElement(By fromElement, By toElement) {
-        action.moveTo(fromElement, toElement);
+        act.moveTo(fromElement, toElement);
         return this;
     }
 
     public String getDraggableText() {
-        return action.textValue(DRAGGABLE_TEXT);
+        return act.textValue(DRAGGABLE_TEXT);
     }
 }
