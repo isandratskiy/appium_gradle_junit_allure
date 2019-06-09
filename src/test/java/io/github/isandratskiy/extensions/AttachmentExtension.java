@@ -1,6 +1,5 @@
 package io.github.isandratskiy.extensions;
 
-import io.appium.java_client.android.AndroidDriver;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.junit.jupiter.api.extension.TestWatcher;
 
@@ -10,10 +9,8 @@ import static io.github.isandratskiy.utils.AttachmentUtils.takeScreenshot;
 
 public class AttachmentExtension implements TestWatcher {
 
-    private AndroidDriver driver;
-
-    public AttachmentExtension(AndroidDriver driver) {
-        this.driver = driver;
+    public AttachmentExtension() {
+        throw new UnsupportedOperationException("Illegal access to constructor.");
     }
 
     @Override
@@ -26,11 +23,11 @@ public class AttachmentExtension implements TestWatcher {
 
     @Override
     public void testAborted(ExtensionContext context, Throwable cause) {
-        takeScreenshot(driver);
+        takeScreenshot();
     }
 
     @Override
     public void testFailed(ExtensionContext context, Throwable cause) {
-        takeScreenshot(driver);
+        takeScreenshot();
     }
 }

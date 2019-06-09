@@ -8,12 +8,13 @@ import lombok.val;
 
 import java.net.URL;
 
+import static io.appium.java_client.service.local.AppiumDriverLocalService.*;
 import static io.appium.java_client.service.local.flags.GeneralServerFlag.*;
 
 @Slf4j
 public class AppiumServiceProvider {
 
-    private static AppiumDriverLocalService service;
+    private static final ThreadLocal<AppiumDriverLocalService> SERVICE = new ThreadLocal<>();
 
     /**
      * initialization.
@@ -27,11 +28,11 @@ public class AppiumServiceProvider {
                 .withArgument(LOG_LEVEL,"error")
                 .withArgument(DEBUG_LOG_SPACING)
                 .withArgument(LOG_NO_COLORS);
-        service = AppiumDriverLocalService.buildService(builder);
-        service.clearOutPutStreams();
-        service.enableDefaultSlf4jLoggingOfOutputData();
-        service.start();
-        if (service == null || !service.isRunning()) {
+        SERVICE.set(buildService(builder));
+        SERVICE.get().clearOutPutStreams();
+        SERVICE.get().enableDefaultSlf4jLoggingOfOutputData();
+        SERVICE.get().start();
+        if (SERVICE.get() == null || !SERVICE.get().isRunning()) {
             throw new AppiumServerHasNotBeenStartedLocallyException("[Appium] Appium service node is not started");
         } else {
             log.info("[Appium] Appium service is started");
@@ -42,8 +43,8 @@ public class AppiumServiceProvider {
      * finishing.
      */
     public void stopService() {
-        if (service.isRunning()) {
-            service.stop();
+        if (SERVICE.get().isRunning()) {
+            SERVICE.get().stop();
             log.info("[Appium] Appium service is stopped");
         }
     }
@@ -52,6 +53,6 @@ public class AppiumServiceProvider {
      * get url for driver.
      */
     static URL getInstance() {
-        return service.getUrl();
+        return SERVICE.get().getUrl();
     }
 }

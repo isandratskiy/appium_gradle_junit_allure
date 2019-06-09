@@ -1,8 +1,9 @@
 package io.github.isandratskiy.core.wrappers;
 
-import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
+
+import static io.github.isandratskiy.core.driver.AppiumDriverProvider.*;
 
 public final class ElementCondition {
 
@@ -11,8 +12,8 @@ public final class ElementCondition {
     }
 
     @Step("Element is present :: {locator} ")
-    public static boolean isPresentElement(final AndroidDriver driver, final By locator) {
-        Condition ele = element -> driver.findElements(locator).size() > 0;
+    public static boolean isPresentElement(final By locator) {
+        Condition ele = element -> getDriver().findElements(locator).size() > 0;
         return ele.check(locator);
     }
 }

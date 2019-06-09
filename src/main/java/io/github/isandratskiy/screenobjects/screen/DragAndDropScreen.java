@@ -1,18 +1,12 @@
-package io.github.isandratskiy.screens;
+package io.github.isandratskiy.screenobjects.screen;
 
-import io.appium.java_client.android.AndroidDriver;
-import io.github.isandratskiy.core.MobileAction;
+import io.github.isandratskiy.screenobjects.AbstractScreen;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import static io.appium.java_client.MobileBy.*;
 
-public class DragAndDropScreen {
-
-    private final AndroidDriver driver;
-    private final WebDriverWait wait;
-    private final MobileAction act;
+public class DragAndDropScreen extends AbstractScreen {
 
     public final String ACTIVITY = ".view.DragAndDropDemo";
 
@@ -22,19 +16,13 @@ public class DragAndDropScreen {
     private final By DRAG_DOT_HIDDEN = AndroidUIAutomator("resourceId(\"io.appium.android.apis:id/drag_dot_hidden\").enabled(true)");
     private final By DRAGGABLE_TEXT = AndroidUIAutomator("resourceId(\"io.appium.android.apis:id/drag_text\")");
 
-    public DragAndDropScreen(AndroidDriver driver, WebDriverWait wait) {
-        this.driver = driver;
-        this.wait = wait;
-        this.act = new MobileAction(driver, wait);
-    }
-
     private DragAndDropScreen dragAndDropElement(final By fromElement, final By toElement) {
-        act.moveTo(fromElement, toElement);
+        action.moveTo(fromElement, toElement);
         return this;
     }
 
     public String getDraggableText() {
-        return act.textValue(DRAGGABLE_TEXT);
+        return action.textValue(DRAGGABLE_TEXT);
     }
 
     @Step("Drag and drop first element")

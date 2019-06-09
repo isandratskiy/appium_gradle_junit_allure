@@ -1,9 +1,9 @@
 package io.github.isandratskiy.core.wrappers;
 
-import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.Step;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.support.ui.WebDriverWait;
+
+import static io.github.isandratskiy.core.driver.AppiumDriverProvider.*;
 
 public final class ActivityCondition {
 
@@ -12,10 +12,10 @@ public final class ActivityCondition {
     }
 
     @Step("Activity: {activity} is opened")
-    public static boolean activityIsPresent(final AndroidDriver driver, final WebDriverWait wait, final String activity) {
+    public static boolean activityIsPresent(final String activity) {
         try {
-            return wait.until(state ->
-                    driver.currentActivity().equalsIgnoreCase(activity));
+            return getDriverWait().until(state ->
+                    getDriver().currentActivity().equalsIgnoreCase(activity));
         } catch (Exception ex) {
             throw new TimeoutException("[Wait] Activity is not present", ex);
         }

@@ -1,10 +1,10 @@
 package io.github.isandratskiy.utils;
 
-import io.appium.java_client.android.AndroidDriver;
 import io.qameta.allure.Attachment;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
+import static io.github.isandratskiy.core.driver.AppiumDriverProvider.*;
 import static org.openqa.selenium.OutputType.BYTES;
 
 @Slf4j
@@ -16,12 +16,10 @@ public final class AttachmentUtils {
         return screenShot;
     }
 
-    public static byte[] takeScreenshot(AndroidDriver driver) {
-        if (driver == null) {
+    public static byte[] takeScreenshot() {
+        if (getDriver() == null) {
             log.info("Driver for screenshot not found");
             return null;
-        } else {
-            return saveScreenshot(driver.getScreenshotAs(BYTES));
-        }
+        } else return saveScreenshot(getDriver().getScreenshotAs(BYTES));
     }
 }

@@ -1,7 +1,8 @@
 package io.github.isandratskiy.core;
 
 import io.appium.java_client.android.Activity;
-import io.appium.java_client.android.AndroidDriver;
+
+import static io.github.isandratskiy.core.driver.AppiumDriverProvider.*;
 
 public final class NavigationRouter {
 
@@ -15,7 +16,7 @@ public final class NavigationRouter {
         return new Activity(APP_PACKAGE, activity);
     }
 
-    public static void openActivity(final AndroidDriver driver, final String activity) {
-        driver.startActivity(getActivity(activity));
+    public static void openActivity(final String activity) {
+        getDriver().startActivity(getActivity(activity));
     }
 }
