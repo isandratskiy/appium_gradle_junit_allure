@@ -6,8 +6,7 @@ import io.qameta.allure.Step;
 import static io.appium.java_client.MobileBy.*;
 
 public class MainScreen extends AbstractScreen {
-
-    public final String ACTIVITY = ".ApiDemos";
+    public static final String ACTIVITY = ".ApiDemos";
 
     @Step("Open Preference screen")
     public PreferenceScreen openPreference() {

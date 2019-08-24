@@ -7,8 +7,7 @@ import org.openqa.selenium.By;
 import static io.appium.java_client.MobileBy.*;
 
 public class DragAndDropScreen extends AbstractScreen {
-
-    public final String ACTIVITY = ".view.DragAndDropDemo";
+    public static final String ACTIVITY = ".view.DragAndDropDemo";
 
     private final By DRAG_DOT_ONE = id("drag_dot_1");
     private final By DRAG_DOT_TWO = id("drag_dot_2");
@@ -27,37 +26,25 @@ public class DragAndDropScreen extends AbstractScreen {
 
     @Step("Drag and drop first element")
     public DragAndDropScreen dragFirstElement() {
-        dragAndDropElement(
-                DRAG_DOT_ONE,
-                DRAG_DOT_TWO
-        );
+        dragAndDropElement(DRAG_DOT_ONE, DRAG_DOT_TWO);
         return this;
     }
 
     @Step("Drag and drop second element")
     public DragAndDropScreen dragSecondElement() {
-        dragAndDropElement(
-                DRAG_DOT_TWO,
-                DRAG_DOT_THREE
-        );
+        dragAndDropElement(DRAG_DOT_TWO, DRAG_DOT_THREE);
         return this;
     }
 
     @Step("Drag and drop third element")
     public DragAndDropScreen dragThirdElement() {
-        dragAndDropElement(
-                DRAG_DOT_THREE,
-                DRAG_DOT_ONE
-        );
+        dragAndDropElement(DRAG_DOT_THREE, DRAG_DOT_ONE);
         return this;
     }
 
     @Step("Drag and drop hidden element")
     public DragAndDropScreen dragHiddenElement() {
-        dragAndDropElement(
-                DRAG_DOT_HIDDEN,
-                DRAG_DOT_ONE
-        );
+        dragAndDropElement(DRAG_DOT_HIDDEN, DRAG_DOT_ONE);
         return this;
     }
 }

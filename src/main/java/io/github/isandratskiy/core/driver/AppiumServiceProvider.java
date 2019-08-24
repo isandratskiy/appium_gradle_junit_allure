@@ -13,7 +13,6 @@ import static io.appium.java_client.service.local.flags.GeneralServerFlag.*;
 
 @Slf4j
 public class AppiumServiceProvider {
-
     private static final ThreadLocal<AppiumDriverLocalService> SERVICE = new ThreadLocal<>();
 
     /**
@@ -45,6 +44,7 @@ public class AppiumServiceProvider {
     public void stopService() {
         if (SERVICE.get().isRunning()) {
             SERVICE.get().stop();
+            SERVICE.remove();
             log.info("[Appium] Appium service is stopped");
         }
     }

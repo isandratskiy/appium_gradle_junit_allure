@@ -13,19 +13,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Multiple assert example test")
 class MultipleAssertExampleTest extends BaseTest {
-
-    private MainScreen mainPage;
+    private MainScreen mainScreen;
 
     @BeforeEach
     void setup() {
-        mainPage = new MainScreen();
+        mainScreen = new MainScreen();
     }
 
     @DisplayName("multiple assert should failed")
     @Test
     void testMultipleAssertShouldFailed() {
-        openActivity(mainPage.ACTIVITY);
-        mainPage.openPreference()
+        open(MainScreen.ACTIVITY);
+        mainScreen.openPreference()
                 .openHeaders();
         assertAll(
                 "All prefs should be displayed.",
@@ -41,8 +40,8 @@ class MultipleAssertExampleTest extends BaseTest {
     @DisplayName("multiple assert should passed")
     @Test
     void testMultipleAssertShouldPassed() {
-        openActivity(mainPage.ACTIVITY);
-        mainPage.openPreference()
+        open(MainScreen.ACTIVITY);
+        mainScreen.openPreference()
                 .openHeaders();
         assertAll(
                 "All prefs should be displayed.",

@@ -6,7 +6,6 @@ import org.junit.jupiter.api.extension.BeforeAllCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 
 public class AppiumServiceExtension implements BeforeAllCallback, AfterAllCallback {
-
     private AppiumServiceProvider service;
 
     public AppiumServiceExtension() {
