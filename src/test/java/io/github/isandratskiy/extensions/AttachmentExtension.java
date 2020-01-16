@@ -8,10 +8,6 @@ import java.util.Optional;
 import static io.github.isandratskiy.utils.AttachmentUtils.takeScreenshot;
 
 public class AttachmentExtension implements TestWatcher {
-    public AttachmentExtension() {
-        throw new UnsupportedOperationException("Illegal access to constructor.");
-    }
-
     @Override
     public void testDisabled(ExtensionContext context, Optional<String> reason) {
     }

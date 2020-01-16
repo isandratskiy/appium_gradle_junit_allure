@@ -21,7 +21,7 @@ import static io.github.isandratskiy.core.wrappers.WaitCondition.present;
 
 public class MobileAction {
     private final Dimension size;
-    private  WebDriverWait wait;
+    private WebDriverWait wait;
 
     public MobileAction(WebDriverWait wait) {
         this.wait = wait;
