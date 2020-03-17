@@ -13,7 +13,7 @@ jobs:
           java-version: 1.8
 
       - name: Check dev kvm
-        run: grep kvm /etc/group
+        run: egrep -c '(vmx|svm)' /proc/cpuinfo
 
       - name: Set up Selenoid Infrastructure
         run: make start
