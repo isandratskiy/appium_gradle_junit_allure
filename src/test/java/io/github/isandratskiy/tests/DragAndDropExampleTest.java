@@ -10,7 +10,7 @@ import static io.github.isandratskiy.core.NavigationRouter.*;
 import static org.junit.jupiter.api.Assertions.*;
 
 @DisplayName("Drag and drop test")
-public class DragAndDropExampleTest extends BaseTest {
+class DragAndDropExampleTest extends BaseTest {
 
     private DragAndDropScreen dragAndDropScreen;
 
@@ -23,7 +23,7 @@ public class DragAndDropExampleTest extends BaseTest {
     @DisplayName("can drag and drop first element")
     @Test
     void testCanDragAndDropElement() {
-        openActivity(dragAndDropScreen.ACTIVITY);
+        open(DragAndDropScreen.ACTIVITY);
         dragAndDropScreen.dragFirstElement();
         assertTrue(
                 dragAndDropScreen.getDraggableText().contains("drag_dot_1"),
@@ -34,8 +34,9 @@ public class DragAndDropExampleTest extends BaseTest {
     @DisplayName("can drag and drop hidden element")
     @Test
     void testCanDragAndDropHiddenElement() {
-        openActivity(dragAndDropScreen.ACTIVITY);
-        dragAndDropScreen.dragSecondElement()
+        open(DragAndDropScreen.ACTIVITY);
+        dragAndDropScreen
+                .dragSecondElement()
                 .dragHiddenElement();
         assertTrue(
                 dragAndDropScreen.getDraggableText().contains("drag_dot_hidden"),

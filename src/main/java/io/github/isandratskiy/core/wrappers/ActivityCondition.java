@@ -3,10 +3,10 @@ package io.github.isandratskiy.core.wrappers;
 import io.qameta.allure.Step;
 import org.openqa.selenium.TimeoutException;
 
-import static io.github.isandratskiy.core.driver.AppiumDriverProvider.*;
+import static io.github.isandratskiy.core.driver.AndroidDriverProvider.getDriver;
+import static io.github.isandratskiy.core.driver.AndroidDriverProvider.getDriverWait;
 
 public final class ActivityCondition {
-
     public ActivityCondition() {
         throw new UnsupportedOperationException("Illegal access to constructor.");
     }

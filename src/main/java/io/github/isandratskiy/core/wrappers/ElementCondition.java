@@ -3,10 +3,9 @@ package io.github.isandratskiy.core.wrappers;
 import io.qameta.allure.Step;
 import org.openqa.selenium.By;
 
-import static io.github.isandratskiy.core.driver.AppiumDriverProvider.*;
+import static io.github.isandratskiy.core.driver.AndroidDriverProvider.getDriver;
 
 public final class ElementCondition {
-
     public ElementCondition() {
         throw new UnsupportedOperationException("Illegal access to constructor.");
     }

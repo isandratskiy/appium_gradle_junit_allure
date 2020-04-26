@@ -4,7 +4,7 @@ import io.qameta.allure.Attachment;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 
-import static io.github.isandratskiy.core.driver.AppiumDriverProvider.*;
+import static io.github.isandratskiy.core.driver.AndroidDriverProvider.getDriver;
 import static org.openqa.selenium.OutputType.BYTES;
 
 @Slf4j

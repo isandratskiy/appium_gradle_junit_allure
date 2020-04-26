@@ -7,6 +7,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Dimension;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -15,15 +16,16 @@ import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.WaitOptions.waitOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static io.appium.java_client.touch.offset.PointOption.point;
-import static io.github.isandratskiy.core.driver.AppiumDriverProvider.*;
+import static io.github.isandratskiy.core.driver.AndroidDriverProvider.getDriver;
 import static io.github.isandratskiy.core.wrappers.WaitCondition.present;
 
 public class MobileAction {
-
     private final Dimension size;
+    private WebDriverWait wait;
 
-    public MobileAction() {
-        size = getDriver().manage().window().getSize();
+    public MobileAction(WebDriverWait wait) {
+        this.wait = wait;
+        this.size = getDriver().manage().window().getSize();
     }
 
     //getter for touch instance
@@ -34,7 +36,7 @@ public class MobileAction {
     //wait for element condition
     private WebElement waitFor(final WaitCondition condition, final By locator) {
         try {
-            return getDriverWait().until(condition.getType().apply(locator));
+            return wait.until(condition.getType().apply(locator));
         } catch (TimeoutException ex) {
             throw new TimeoutException("[WebDriverWait] : " + ex.getMessage());
         }
