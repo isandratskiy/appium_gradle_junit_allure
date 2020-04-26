@@ -21,8 +21,8 @@ buildscript {
         }
     }
     dependencies {
-        classpath 'io.franzbecker:gradle-lombok:1.14'
-        classpath 'io.qameta.allure:allure-gradle:2.5'
+        classpath 'io.franzbecker:gradle-lombok:3.3.0'
+        classpath 'io.qameta.allure:allure-gradle:2.8.1'
         classpath 'com.adarshr:gradle-test-logger-plugin:1.6.0'
     }
 }
@@ -59,13 +59,13 @@ afterEvaluate {
 }
 
 allure {
-    version = '2.7.0'
+    version = '2.13.1'
     aspectjweaver = true
     aspectjVersion = '1.8.10'
     configuration = 'compile'
 
     useJUnit5 {
-        version = '2.7.0'
+        version = '2.13.1'
     }
 }
 
